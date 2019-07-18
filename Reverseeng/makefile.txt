@@ -1,0 +1,11 @@
+filename = re
+
+$(filename).exe: $(filename).obj
+	link /nologo $(filename).obj /align:16 /entry:main /driver kernel32.lib user32.lib libcmt.lib
+
+$(filename).obj : $(filename).c	
+	cl.exe /c /nologo /TC $(filename).c
+clean :
+	del $(filename).obj $(filename).exe
+
+rebuild : clean $(filename).exe
